@@ -415,7 +415,9 @@
         try{
           var errBody = await response.json();
           if(errBody && errBody.errors){
-            detail = errBody.errors.map(function(er){ return er.message; }).join(' ');
+            detail = errBody.errors.map(function(er){
+              return (er.field ? (er.field + ': ') : '') + er.message;
+            }).join(' | ');
           }
         }catch(parseErr){}
         throw new Error('Formspree ' + response.status + (detail ? (': ' + detail) : ''));
