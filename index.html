@@ -395,6 +395,24 @@
     data.enviado_em = new Date().toLocaleString('pt-BR');
     data._subject = 'Novo briefing — Romeo/Torúm (' + (data.casa || 'sem casa definida') + ')';
 
+    var labels = {
+      casa: 'Casa', tempo_aberto: 'Tempo aberto', quem_aprova: 'Quem aprova',
+      prioridade: 'Prioridade', meta: 'Meta', datas_fixas: 'Datas fixas',
+      publico: 'Público', tom: 'Tom de voz', referencias: 'Referências',
+      manual_marca: 'Manual de marca', quem_produz_artes: 'Quem produz artes',
+      experiencia_anterior: 'Experiência anterior', quem_capta: 'Quem capta',
+      frequencia_captacao: 'Frequência de captação', equipamento: 'Equipamento',
+      banco_imagens: 'Banco de imagens', horarios_captacao: 'Horários de captação',
+      fluxo_aprovacao: 'Fluxo de aprovação', prazo_aprovacao: 'Prazo de aprovação',
+      restricoes: 'Restrições', formato_proposta: 'Formato da proposta',
+      prazo_inicio: 'Prazo de início'
+    };
+    var summaryLines = Object.keys(labels).map(function(k){
+      var val = data[k];
+      return val ? (labels[k] + ': ' + val) : null;
+    }).filter(Boolean);
+    data.message = summaryLines.join('\n');
+
     var submitBtn = form.querySelector('button.primary');
     var errorMsg = document.getElementById('submitError');
     errorMsg.classList.remove('show');
