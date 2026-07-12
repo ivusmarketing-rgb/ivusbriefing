@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing — Romeo Pizza Bar &amp; Torúm | Ivus Studio</title>
+<meta name="description" content="Briefing de redes sociais para Romeo Pizza Bar e Torúm Bar e Parrilla — Ivus Studio de marca e conteúdo.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;800&family=Manrope:wght@400;500;700&display=swap');
+
+  :root{
+    --bg:#1c0836;
+    --surface:#2c0f52;
+    --surface-2:#3a1768;
+    --accent:#ffffff;
+    --accent-dim:#c9b3ea;
+    --violet:#7a3fd6;
+    --cream:#f5f1fb;
+    --muted:#b6a3d9;
+    --line:#4a2a7a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Manrope',sans-serif;
+    line-height:1.6;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:48px 24px 96px;}
+
+  .blob-row{display:flex;align-items:flex-end;gap:6px;height:46px;margin-bottom:22px;}
+  .blob-row span{flex:1;max-width:20px;border-radius:14px;background:linear-gradient(160deg, var(--surface-2), var(--violet));}
+  .blob-row span:nth-child(1){height:60%;}
+  .blob-row span:nth-child(2){height:100%;}
+  .blob-row span:nth-child(3){height:75%;}
+  .blob-row span:nth-child(4){height:45%;}
+  .blob-row span:nth-child(5){height:88%;}
+
+  .wordmark{font-family:'Baloo 2',cursive;font-weight:800;font-size:22px;color:var(--cream);letter-spacing:-0.01em;}
+  .brand-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .flame{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(122,63,214,0.18);}
+  .eyebrow{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);}
+
+  h1{
+    font-family:'Baloo 2',cursive;
+    font-weight:800;
+    font-size:34px;
+    margin:6px 0 10px;
+    color:var(--cream);
+  }
+  .intro{color:var(--muted);font-size:15px;max-width:56ch;margin-bottom:36px;}
+
+  .progress{display:flex;gap:4px;margin-bottom:40px;}
+  .progress span{flex:1;height:2px;background:var(--line);border-radius:2px;overflow:hidden;}
+  .progress span i{display:block;height:100%;width:0%;background:var(--accent);transition:width .3s ease;}
+
+  fieldset{
+    border:none;
+    padding:0;
+    margin:0 0 40px;
+  }
+  .step-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px;}
+  .step-num{font-family:'Baloo 2',cursive;font-size:20px;font-weight:600;color:var(--accent-dim);}
+  legend, .step-title{font-family:'Baloo 2',cursive;font-weight:600;font-size:20px;color:var(--cream);padding:0;}
+  .step-sub{color:var(--muted);font-size:13px;margin:2px 0 20px;}
+
+  label{display:block;font-size:13px;color:var(--muted);margin:18px 0 6px;}
+  label.first{margin-top:0;}
+
+  input[type="text"], textarea, select{
+    width:100%;
+    background:var(--surface);
+    border:0.5px solid var(--line);
+    color:var(--cream);
+    border-radius:6px;
+    padding:10px 12px;
+    font-family:'Manrope',sans-serif;
+    font-size:14px;
+  }
+  textarea{min-height:72px;resize:vertical;}
+  input:focus, textarea:focus, select:focus{
+    outline:none;
+    border-color:var(--accent);
+    box-shadow:0 0 0 2px rgba(122,63,214,0.25);
+  }
+  ::placeholder{color:#7a5fa8;}
+
+  .choices{display:flex;flex-wrap:wrap;gap:8px;}
+  .choice{
+    border:0.5px solid var(--line);
+    background:var(--surface);
+    color:var(--muted);
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:13px;
+    cursor:pointer;
+    user-select:none;
+  }
+  .choice.on{
+    border-color:var(--accent);
+    color:var(--cream);
+    background:rgba(122,63,214,0.16);
+  }
+
+  .divider{border-top:0.5px solid var(--line);margin:0 0 40px;}
+
+  .submit-row{display:flex;align-items:center;gap:16px;margin-top:8px;}
+  button.primary{
+    background:var(--accent);
+    color:#2c0f52;
+    border:none;
+    font-weight:700;
+    font-size:14px;
+    padding:12px 26px;
+    border-radius:6px;
+    cursor:pointer;
+  }
+  button.primary:active{transform:scale(0.98);}
+  button.primary:disabled{opacity:0.6;cursor:default;}
+  .hint{font-size:12px;color:var(--muted);}
+
+  .honeypot{position:absolute;left:-9999px;top:-9999px;}
+
+  .done{display:none;text-align:center;padding:60px 0;}
+  .done.show{display:block;}
+  .done .flame-big{width:14px;height:14px;border-radius:50%;background:var(--accent);margin:0 auto 18px;box-shadow:0 0 0 5px rgba(122,63,214,0.18);}
+  .done h2{font-family:'Baloo 2',cursive;font-size:24px;margin:0 0 8px;}
+  .done p{color:var(--muted);font-size:14px;}
+
+  .form-shell.hidden{display:none;}
+
+  .submit-error{color:#e08fa0;font-size:13px;margin:10px 0 0;display:none;}
+  .submit-error.show{display:block;}
+
+  footer{margin-top:56px;border-top:0.5px solid var(--line);padding-top:20px;font-size:12px;color:var(--muted);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="form-shell" id="formShell">
+    <div class="blob-row"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="wordmark">ivus</div>
+    <div class="brand-row"><span class="flame"></span><span class="eyebrow">Romeo Pizza Bar &amp; Torúm — Bar e Parrilla</span></div>
+    <h1>Briefing de redes sociais</h1>
+    <p class="intro">Antes de montar a proposta, precisamos entender como a casa funciona hoje.</p>
+
+    <div class="progress" id="progress"></div>
+
+    <!--
+      CONFIGURAÇÃO DE ENVIO POR E-MAIL (Formspree)
+      1. Crie uma conta gratuita em https://formspree.io usando o e-mail que deve RECEBER as respostas.
+      2. Crie um novo formulário e copie o endpoint (algo como https://formspree.io/f/xxxxxxxx).
+      3. Cole esse endpoint na constante FORMSPREE_ENDPOINT lá embaixo, no <script>.
+      4. Formspree envia um e-mail de confirmação na primeira vez — é só confirmar.
+    -->
+    <form id="briefingForm">
+      <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off">
+
+      <fieldset data-step="1">
+        <div class="step-head"><span class="step-num">01</span><span class="step-title">Sobre a casa</span></div>
+        <p class="step-sub">Contexto básico do negócio.</p>
+
+        <label class="first">Essa resposta é sobre</label>
+        <div class="choices" data-name="casa">
+          <div class="choice">Romeo Pizza Bar</div>
+          <div class="choice">Torúm Bar e Parrilla</div>
+          <div class="choice">As duas juntas</div>
+        </div>
+
+        <label>Há quanto tempo a casa está aberta?</label>
+        <input type="text" name="tempo_aberto" placeholder="Ex: 2 anos">
+
+        <label>Quem aprova o conteúdo hoje, na prática?</label>
+        <input type="text" name="quem_aprova" placeholder="Nome ou função de quem dá o ok final">
+      </fieldset>
+
+      <div class="divider"></div>
+
+      <fieldset data-step="2">
+        <div class="step-head"><span class="step-num">02</span><span class="step-title">Objetivos</span></div>
+        <p class="step-sub">O que vocês esperam ganhar com as redes.</p>
+
+        <label class="first">Prioridade número 1 hoje</label>
+        <div class="choices" data-name="prioridade">
+          <div class="choice">Fluxo no restaurante</div>
+          <div class="choice">Delivery</div>
+          <div class="choice">Eventos privados</div>
+          <div class="choice">Construção de marca</div>
+        </div>
+
+        <label>Existe alguma meta em mente (seguidores, reservas, etc)?</label>
+        <textarea name="meta" placeholder="Se não tiver número, descreva o que seria sucesso pra você"></textarea>
+
+        <label>Datas ou eventos fixos que sempre precisam de campanha</label>
+        <textarea name="datas_fixas" placeholder="Ex: jogos do Brasil, Dia Mundial da Pizza, shows..."></textarea>
+      </fieldset>
+
+      <div class="divider"></div>
+
+      <fieldset data-step="3">
+        <div class="step-head"><span class="step-num">03</span><span class="step-title">Público e tom de voz</span></div>
+        <p class="step-sub">Quem vocês querem atrair e como querem soar.</p>
+
+        <label class="first">Descreva o público ideal da casa</label>
+        <textarea name="publico" placeholder="Idade, perfil, ocasião de consumo, ticket médio..."></textarea>
+
+        <label>Tom de voz que combina com a marca</label>
+        <div class="choices" data-name="tom">
+          <div class="choice">Descontraído</div>
+          <div class="choice">Sofisticado</div>
+          <div class="choice">Boêmio</div>
+          <div class="choice">Outro</div>
+        </div>
+
+        <label>Contas ou marcas que admiram como referência</label>
+        <input type="text" name="referencias" placeholder="Pode ser do ramo ou não">
+      </fieldset>
+
+      <div class="divider"></div>
+
+      <fieldset data-step="4">
+        <div class="step-head"><span class="step-num">04</span><span class="step-title">Identidade visual</span></div>
+        <p class="step-sub">O que já existe hoje de marca.</p>
+
+        <label class="first">Existe manual de marca (cores, fontes, logo em variações)?</label>
+        <div class="choices" data-name="manual_marca">
+          <div class="choice">Sim</div>
+          <div class="choice">Não</div>
+          <div class="choice">Parcial</div>
+        </div>
+
+        <label>Quem produz as artes hoje (posts, eventos)?</label>
+        <input type="text" name="quem_produz_artes" placeholder="Equipe própria, freelancer, agência...">
+
+        <label>Já trabalharam com agência antes? O que funcionou ou não</label>
+        <textarea name="experiencia_anterior"></textarea>
+      </fieldset>
+
+      <div class="divider"></div>
+
+      <fieldset data-step="5">
+        <div class="step-head"><span class="step-num">05</span><span class="step-title">Captação de fotos e vídeos</span></div>
+        <p class="step-sub">O bloco mais importante pra gente dimensionar a proposta certa.</p>
+
+        <label class="first">Quem faz a captação hoje? (fotos e vídeos)</label>
+        <div class="choices" data-name="quem_capta">
+          <div class="choice">Equipe própria / celular</div>
+          <div class="choice">Freelancer avulso</div>
+          <div class="choice">Agência</div>
+          <div class="choice">Ninguém fixo</div>
+        </div>
+
+        <label>Com que frequência</label>
+        <select name="frequencia_captacao">
+          <option value="">Selecione</option>
+          <option>Semanal</option>
+          <option>Quinzenal</option>
+          <option>Mensal</option>
+          <option>Só por evento específico</option>
+          <option>Praticamente nunca</option>
+        </select>
+
+        <label>Equipamento usado hoje</label>
+        <div class="choices" data-name="equipamento" data-multi="true">
+          <div class="choice">Celular</div>
+          <div class="choice">Câmera profissional</div>
+          <div class="choice">Drone</div>
+          <div class="choice">Iluminação própria</div>
+        </div>
+
+        <label>Já existe banco de imagens/vídeos pra reaproveitar?</label>
+        <div class="choices" data-name="banco_imagens">
+          <div class="choice">Sim, bastante material</div>
+          <div class="choice">Só um pouco</div>
+          <div class="choice">Não, seria do zero</div>
+        </div>
+
+        <label>Horários de menor movimento, melhores para gravar sem atrapalhar o salão</label>
+        <input type="text" name="horarios_captacao" placeholder="Ex: terça e quarta à tarde">
+      </fieldset>
+
+      <div class="divider"></div>
+
+      <fieldset data-step="6">
+        <div class="step-head"><span class="step-num">06</span><span class="step-title">Operação e aprovação</span></div>
+        <p class="step-sub">Como o dia a dia funciona na prática.</p>
+
+        <label class="first">Fluxo de aprovação de conteúdo hoje</label>
+        <textarea name="fluxo_aprovacao" placeholder="Quem vê antes de postar, por qual canal (WhatsApp, e-mail...)"></textarea>
+
+        <label>Prazo médio de resposta para aprovar posts e datas de gravação</label>
+        <input type="text" name="prazo_aprovacao" placeholder="Ex: até 2 dias úteis">
+
+        <label>Alguma restrição de imagem (área que não pode filmar, funcionário que não aparece, etc)</label>
+        <textarea name="restricoes"></textarea>
+      </fieldset>
+
+      <div class="divider"></div>
+
+      <fieldset data-step="7">
+        <div class="step-head"><span class="step-num">07</span><span class="step-title">Orçamento e formato</span></div>
+        <p class="step-sub">Últimos pontos para desenhar a proposta certa.</p>
+
+        <label class="first">A proposta deve cobrir as duas casas juntas ou separadas?</label>
+        <div class="choices" data-name="formato_proposta">
+          <div class="choice">Juntas, com desconto de escala</div>
+          <div class="choice">Separadas</div>
+          <div class="choice">Ainda não sei</div>
+        </div>
+
+        <label>Prazo desejado para início do trabalho</label>
+        <input type="text" name="prazo_inicio" placeholder="Ex: assim que possível, ou a partir de tal mês">
+      </fieldset>
+
+      <div class="submit-row">
+        <button type="submit" class="primary">Enviar respostas</button>
+        <span class="hint">Suas respostas vão direto para a equipe da Ivus.</span>
+      </div>
+      <p class="submit-error" id="submitError">Não deu para enviar agora. Confira sua conexão e tenta de novo.</p>
+    </form>
+
+    <footer>Ivus — studio de marca e conteúdo</footer>
+  </div>
+
+  <div class="done" id="doneScreen">
+    <div class="flame-big"></div>
+    <h2>Respostas enviadas</h2>
+    <p>Obrigado — isso vai direto para a preparação da proposta de Romeo e Torúm.</p>
+  </div>
+
+</div>
+
+<script>
+  // Troque pelo endpoint gerado na sua conta Formspree (ver comentário acima do <form>)
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/SEU_ID_AQUI';
+
+  document.querySelectorAll('.choices').forEach(function(group){
+    group.querySelectorAll('.choice').forEach(function(chip){
+      chip.addEventListener('click', function(){
+        var multi = group.getAttribute('data-multi') === 'true';
+        if(!multi){
+          group.querySelectorAll('.choice').forEach(function(c){ c.classList.remove('on'); });
+        }
+        chip.classList.toggle('on');
+      });
+    });
+  });
+
+  var fieldsets = document.querySelectorAll('fieldset');
+  var progressBar = document.getElementById('progress');
+  fieldsets.forEach(function(){
+    var span = document.createElement('span');
+    span.innerHTML = '<i></i>';
+    progressBar.appendChild(span);
+  });
+
+  function updateProgress(){
+    var bars = progressBar.querySelectorAll('i');
+    var winH = window.innerHeight;
+    fieldsets.forEach(function(fs, idx){
+      var rect = fs.getBoundingClientRect();
+      var visible = rect.top < winH * 0.7;
+      bars[idx].style.width = visible ? '100%' : '0%';
+    });
+  }
+  window.addEventListener('scroll', updateProgress);
+  updateProgress();
+
+  function collectChoices(name, multi){
+    var group = document.querySelector('.choices[data-name="'+name+'"]');
+    var selected = Array.from(group.querySelectorAll('.choice.on')).map(function(c){ return c.textContent; });
+    return multi ? selected : (selected[0] || '');
+  }
+
+  document.getElementById('briefingForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    var form = e.target;
+    var fd = new FormData(form);
+    var data = {};
+    fd.forEach(function(v,k){ data[k] = v; });
+
+    data.casa = collectChoices('casa', false);
+    data.prioridade = collectChoices('prioridade', false);
+    data.tom = collectChoices('tom', false);
+    data.manual_marca = collectChoices('manual_marca', false);
+    data.quem_capta = collectChoices('quem_capta', false);
+    data.equipamento = collectChoices('equipamento', true).join(', ');
+    data.banco_imagens = collectChoices('banco_imagens', false);
+    data.formato_proposta = collectChoices('formato_proposta', false);
+    data.enviado_em = new Date().toLocaleString('pt-BR');
+    data._subject = 'Novo briefing — Romeo/Torúm (' + (data.casa || 'sem casa definida') + ')';
+
+    var submitBtn = form.querySelector('button.primary');
+    var errorMsg = document.getElementById('submitError');
+    errorMsg.classList.remove('show');
+    submitBtn.textContent = 'Enviando...';
+    submitBtn.disabled = true;
+
+    try{
+      if(FORMSPREE_ENDPOINT.indexOf('SEU_ID_AQUI') !== -1){
+        throw new Error('Configure o FORMSPREE_ENDPOINT antes de publicar o formulário.');
+      }
+      var response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if(!response.ok){ throw new Error('Formspree respondeu com erro'); }
+      document.getElementById('formShell').classList.add('hidden');
+      document.getElementById('doneScreen').classList.add('show');
+    }catch(err){
+      submitBtn.textContent = 'Enviar respostas';
+      submitBtn.disabled = false;
+      errorMsg.classList.add('show');
+      console.error(err);
+    }
+  });
+</script>
+
+</body>
+</html>
