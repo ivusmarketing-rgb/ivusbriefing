@@ -407,12 +407,22 @@
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(data)
       });
-      if(!response.ok){ throw new Error('Formspree respondeu com erro'); }
+      if(!response.ok){
+        var detail = '';
+        try{
+          var errBody = await response.json();
+          if(errBody && errBody.errors){
+            detail = errBody.errors.map(function(er){ return er.message; }).join(' ');
+          }
+        }catch(parseErr){}
+        throw new Error('Formspree ' + response.status + (detail ? (': ' + detail) : ''));
+      }
       document.getElementById('formShell').classList.add('hidden');
       document.getElementById('doneScreen').classList.add('show');
     }catch(err){
       submitBtn.textContent = 'Enviar respostas';
       submitBtn.disabled = false;
+      errorMsg.textContent = 'Não deu para enviar agora (' + err.message + '). Confira sua conexão e tenta de novo.';
       errorMsg.classList.add('show');
       console.error(err);
     }
