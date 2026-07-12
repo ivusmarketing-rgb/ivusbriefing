@@ -306,14 +306,7 @@
         <div class="step-head"><span class="step-num">07</span><span class="step-title">Orçamento e formato</span></div>
         <p class="step-sub">Últimos pontos para desenhar a proposta certa.</p>
 
-        <label class="first">A proposta deve cobrir as duas casas juntas ou separadas?</label>
-        <div class="choices" data-name="formato_proposta">
-          <div class="choice">Juntas, com desconto de escala</div>
-          <div class="choice">Separadas</div>
-          <div class="choice">Ainda não sei</div>
-        </div>
-
-        <label>Prazo desejado para início do trabalho</label>
+        <label class="first">Prazo desejado para início do trabalho</label>
         <input type="text" name="prazo_inicio" placeholder="Ex: assim que possível, ou a partir de tal mês">
       </fieldset>
 
@@ -391,7 +384,6 @@
     data.quem_capta = collectChoices('quem_capta', false);
     data.equipamento = collectChoices('equipamento', true).join(', ');
     data.banco_imagens = collectChoices('banco_imagens', false);
-    data.formato_proposta = collectChoices('formato_proposta', false);
     data.enviado_em = new Date().toLocaleString('pt-BR');
     data._subject = 'Novo briefing — Romeo/Torúm (' + (data.casa || 'sem casa definida') + ')';
 
@@ -404,7 +396,7 @@
       frequencia_captacao: 'Frequência de captação', equipamento: 'Equipamento',
       banco_imagens: 'Banco de imagens', horarios_captacao: 'Horários de captação',
       fluxo_aprovacao: 'Fluxo de aprovação', prazo_aprovacao: 'Prazo de aprovação',
-      restricoes: 'Restrições', formato_proposta: 'Formato da proposta',
+      restricoes: 'Restrições',
       prazo_inicio: 'Prazo de início'
     };
     var summaryLines = Object.keys(labels).map(function(k){
